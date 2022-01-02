@@ -1,0 +1,331 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap");
+
+// Color variables:
+$very-dark-grayish-blue: hsl(217, 19%, 35%);
+$desaturated-blue: hsl(214, 17%, 51%);
+$grayish-blue: hsl(212, 23%, 69%);
+$light-grayish-blue: hsl(210, 46%, 95%);
+
+$radius: 10px;
+
+// Mixins:
+@mixin flex-align($vertical: default, $horizontal: default) {
+    display: flex;
+    align-items: $vertical;
+    justify-content: $horizontal;
+}
+
+@mixin full-percent($width: true, $height: true) {
+    @if $width {
+        width: 100%;
+    }
+    @if $height {
+        height: 100%;
+    }
+}
+
+@mixin square-image($val, $rounded) {
+    width: $val;
+    height: $val;
+    @if $rounded {
+        border-radius: 50%;
+    }
+    object-fit: contain;
+    object-position: center;
+}
+
+@mixin active-effect() {
+    background-color: $desaturated-blue;
+    .button {
+        filter: brightness(200%);
+    }
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 0.8125em;
+    @include flex-align(center, center);
+    background-color: $light-grayish-blue;
+    width: 100vw;
+    height: 100vh;
+    font-family: "Manrope", sans-serif;
+}
+
+.mbl-share-data{
+    display:none;
+}
+
+.container {
+    @include flex-align(center);
+    @include full-percent;
+    position:relative;
+    max-width: 730px;
+    height: 280px;
+    border-radius: $radius;
+    background-color: white;
+    box-shadow: 10px 40px 30px 1px rgba(72, 85, 106, 0.05);
+
+    & > img {
+        border-radius: $radius 0px 0px $radius;
+        width: 39%;
+        height: 100%;
+        object-fit: cover;
+        object-position: left;
+        filter: contrast(95%) brightness(107%);
+        transition: object-position 0.6s ease-in-out;
+
+        &:hover {
+            object-position: right;
+        }
+    }
+}
+
+.content::-webkit-scrollbar {
+    display: none;
+}
+
+.content {
+    @include full-percent;
+    padding: 32px 40px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    .top {
+        margin-bottom: 20px;
+
+        h1 {
+            font-size: 1.285rem;
+            color: $very-dark-grayish-blue;
+            margin-bottom: 0.7em;
+        }
+
+        p {
+            color: $desaturated-blue;
+            line-height: 1.25rem;
+            letter-spacing: 0.008rem;
+            margin-top: -1px;
+        }
+    }
+
+    .bottom {
+        @include flex-align(center, space-between);
+
+        .data {
+            @include flex-align(center, flex-start);
+
+            img {
+                @include square-image(40px, true);
+                margin-right: 1.2em;
+            }
+
+            .text {
+                .name {
+                    color: $very-dark-grayish-blue;
+                    font-weight: 700;
+                    font-size: 0.82rem;
+                    margin-bottom: 1.5px;
+                }
+
+                .date {
+                    color: $grayish-blue;
+                    font-size: 0.82rem;
+                }
+            }
+        }
+
+        .share-button {
+            position: relative;
+            $transition: all 0.4s ease-in-out;
+            @include square-image(32px, true);
+            background-color: $light-grayish-blue;
+            transition: $transition;
+            $h: 55px;
+            $h_triangle: 12px;
+            z-index:10;
+
+            .button {
+                cursor: pointer;
+                @include full-percent;
+                background-image: url("../images/icon-share.svg");
+                background-repeat: no-repeat;
+                background-position: center;
+                transition: $transition;
+            }
+
+            &:hover {
+                @include active-effect;
+            }
+
+            .share-data {
+                @include flex-align(center, center);
+                border-radius: $radius;
+                position: relative;
+                $w: 250px;
+                top: -$h - 32px - $h_triangle;
+                left: -$w/2 + 32px/2;
+                width: $w;
+                height: $h;
+                background-color: $very-dark-grayish-blue;
+                opacity: 1;
+                gap: 16px;
+                opacity: 0;
+                pointer-events: none;
+                transition: $transition;
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    $w2: 25px;
+                    height: $h_triangle;
+                    bottom: -$h_triangle + 1px;
+                    left: $w/2 - $w2/2;
+                    width: $w2;
+                    width: 0;
+                    height: 0;
+                    border-left: $w2/2 solid transparent;
+                    border-right: $w2/2 solid transparent;
+                    border-top: $h_triangle solid $very-dark-grayish-blue;
+                }
+
+                p {
+                    color: $grayish-blue;
+                    text-transform: uppercase;
+                    letter-spacing: 5px;
+                }
+
+                img {
+                    @include square-image(20px, false);
+                    display: block;
+                    transition: transform 0.4s ease-in-out;
+                    cursor: pointer;
+
+                    &:hover {
+                        transform: scale(120%);
+                    }
+                }
+            }
+
+            &.active {
+                @include active-effect;
+
+                .share-data {
+                    pointer-events: auto;
+                    top: -$h - $h_triangle - 32px - 17px;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+.attribution {
+    position: absolute;
+    bottom: 0;
+
+    a {
+        color: gray;
+        text-decoration: none;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+
+    body{
+        font-size: 0.75em;
+    }
+
+    .container {
+        flex-direction: column;
+        height: auto;
+        width:80%;
+
+        & > img {
+            width: 100%;
+            height: 40%;
+            object-position: top;
+            border-bottom-left-radius: 0px;
+            border-top-right-radius: $radius;
+        }
+
+        .content{
+            height:auto;
+
+            .top{
+                h1{
+                    font-size: 1.2rem;
+                }
+                p{
+                    font-size: 0.8rem;
+                }
+            }
+        }
+
+        .bottom{
+            .share-button{
+
+                transition: top 0.4s ease-in-out;
+                top:0px;
+
+                .share-data{
+                    display:none;
+                }
+
+                &.active{
+                    position:relative;
+                    top:16px;
+                }
+            }
+        }
+
+        .mbl-share-data{
+            @include flex-align(center, space-between);
+            position:absolute;
+            bottom:0;
+            left:0;
+            width:100%;
+            padding:16px 40px 16px 40px;
+            height:40px + 32px;
+            background-color: $very-dark-grayish-blue;
+            border-bottom-left-radius: $radius;
+            border-bottom-right-radius: $radius;
+            opacity:0;
+            transition: opacity 0.5s ease-in-out;
+
+            &.active{
+                opacity: 1;
+            }
+            
+
+            .media{
+                @include flex-align(center, center);
+                gap:16px;
+
+                p {
+                    color: $grayish-blue;
+                    text-transform: uppercase;
+                    letter-spacing: 5px;
+                }
+
+                img {
+                    @include square-image(20px, false);
+                    display: block;
+                    transition: transform 0.4s ease-in-out;
+                    cursor: pointer;
+
+                    &:hover {
+                        transform: scale(120%);
+                    }
+                }
+            }
+        }
+
+        
+
+        
+    }
+}

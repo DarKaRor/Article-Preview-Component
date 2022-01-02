@@ -1,0 +1,375 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-size: 0.8125em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #ecf2f8;
+  width: 100vw;
+  height: 100vh;
+  font-family: "Manrope", sans-serif;
+}
+
+.mbl-share-data {
+  display: none;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: default;
+      -ms-flex-pack: default;
+          justify-content: default;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  max-width: 730px;
+  height: 280px;
+  border-radius: 10px;
+  background-color: white;
+  -webkit-box-shadow: 10px 40px 30px 1px rgba(72, 85, 106, 0.05);
+          box-shadow: 10px 40px 30px 1px rgba(72, 85, 106, 0.05);
+}
+
+.container > img {
+  border-radius: 10px 0px 0px 10px;
+  width: 39%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: left;
+     object-position: left;
+  -webkit-filter: contrast(95%) brightness(107%);
+          filter: contrast(95%) brightness(107%);
+  -webkit-transition: object-position 0.6s ease-in-out;
+  transition: object-position 0.6s ease-in-out;
+  transition: object-position 0.6s ease-in-out, -o-object-position 0.6s ease-in-out;
+}
+
+.container > img:hover {
+  -o-object-position: right;
+     object-position: right;
+}
+
+.content::-webkit-scrollbar {
+  display: none;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  padding: 32px 40px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.content .top {
+  margin-bottom: 20px;
+}
+
+.content .top h1 {
+  font-size: 1.285rem;
+  color: #48556a;
+  margin-bottom: 0.7em;
+}
+
+.content .top p {
+  color: #6d7f97;
+  line-height: 1.25rem;
+  letter-spacing: 0.008rem;
+  margin-top: -1px;
+}
+
+.content .bottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.content .bottom .data {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.content .bottom .data img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: center;
+     object-position: center;
+  margin-right: 1.2em;
+}
+
+.content .bottom .data .text .name {
+  color: #48556a;
+  font-weight: 700;
+  font-size: 0.82rem;
+  margin-bottom: 1.5px;
+}
+
+.content .bottom .data .text .date {
+  color: #9eafc2;
+  font-size: 0.82rem;
+}
+
+.content .bottom .share-button {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: center;
+     object-position: center;
+  background-color: #ecf2f8;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  z-index: 10;
+}
+
+.content .bottom .share-button .button {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/icon-share.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.content .bottom .share-button:hover {
+  background-color: #6d7f97;
+}
+
+.content .bottom .share-button:hover .button {
+  -webkit-filter: brightness(200%);
+          filter: brightness(200%);
+}
+
+.content .bottom .share-button .share-data {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 10px;
+  position: relative;
+  top: -99px;
+  left: -109px;
+  width: 250px;
+  height: 55px;
+  background-color: #48556a;
+  opacity: 1;
+  gap: 16px;
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.content .bottom .share-button .share-data::after {
+  content: "";
+  position: absolute;
+  height: 12px;
+  bottom: -11px;
+  left: 112.5px;
+  width: 25px;
+  width: 0;
+  height: 0;
+  border-left: 12.5px solid transparent;
+  border-right: 12.5px solid transparent;
+  border-top: 12px solid #48556a;
+}
+
+.content .bottom .share-button .share-data p {
+  color: #9eafc2;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+
+.content .bottom .share-button .share-data img {
+  width: 20px;
+  height: 20px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: center;
+     object-position: center;
+  display: block;
+  -webkit-transition: -webkit-transform 0.4s ease-in-out;
+  transition: -webkit-transform 0.4s ease-in-out;
+  transition: transform 0.4s ease-in-out;
+  transition: transform 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
+  cursor: pointer;
+}
+
+.content .bottom .share-button .share-data img:hover {
+  -webkit-transform: scale(120%);
+          transform: scale(120%);
+}
+
+.content .bottom .share-button.active {
+  background-color: #6d7f97;
+}
+
+.content .bottom .share-button.active .button {
+  -webkit-filter: brightness(200%);
+          filter: brightness(200%);
+}
+
+.content .bottom .share-button.active .share-data {
+  pointer-events: auto;
+  top: -116px;
+  opacity: 1;
+}
+
+.attribution {
+  position: absolute;
+  bottom: 0;
+}
+
+.attribution a {
+  color: gray;
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 700px) {
+  body {
+    font-size: 0.75em;
+  }
+  .container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: auto;
+    width: 80%;
+  }
+  .container > img {
+    width: 100%;
+    height: 40%;
+    -o-object-position: top;
+       object-position: top;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 10px;
+  }
+  .container .content {
+    height: auto;
+  }
+  .container .content .top h1 {
+    font-size: 1.2rem;
+  }
+  .container .content .top p {
+    font-size: 0.8rem;
+  }
+  .container .bottom .share-button {
+    -webkit-transition: top 0.4s ease-in-out;
+    transition: top 0.4s ease-in-out;
+    top: 0px;
+  }
+  .container .bottom .share-button .share-data {
+    display: none;
+  }
+  .container .bottom .share-button.active {
+    position: relative;
+    top: 16px;
+  }
+  .container .mbl-share-data {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 16px 40px 16px 40px;
+    height: 72px;
+    background-color: #48556a;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    opacity: 0;
+    -webkit-transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
+  }
+  .container .mbl-share-data.active {
+    opacity: 1;
+  }
+  .container .mbl-share-data .media {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    gap: 16px;
+  }
+  .container .mbl-share-data .media p {
+    color: #9eafc2;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+  }
+  .container .mbl-share-data .media img {
+    width: 20px;
+    height: 20px;
+    -o-object-fit: contain;
+       object-fit: contain;
+    -o-object-position: center;
+       object-position: center;
+    display: block;
+    -webkit-transition: -webkit-transform 0.4s ease-in-out;
+    transition: -webkit-transform 0.4s ease-in-out;
+    transition: transform 0.4s ease-in-out;
+    transition: transform 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
+    cursor: pointer;
+  }
+  .container .mbl-share-data .media img:hover {
+    -webkit-transform: scale(120%);
+            transform: scale(120%);
+  }
+}
+/*# sourceMappingURL=main.css.map */
